@@ -182,7 +182,7 @@ TriMesh MeshHelper::createCube( const Vec3i &resolution )
 	return mesh;
 }
 
-TriMesh MeshHelper::createCylinder( const Vec2i &resolution, float topRadius, float baseRadius, bool closeTop, bool closeBase )
+TriMesh MeshHelper::createCylinder( const Vec2i &resolution, float topRadius, float baseRadius, bool closeTop, bool closeBase, bool fixedHeight )
 {
 	vector<uint32_t> indices;
 	vector<Vec3f> normals;
@@ -193,7 +193,12 @@ TriMesh MeshHelper::createCylinder( const Vec2i &resolution, float topRadius, fl
 	vector<Vec2f> texCoords;
 
 	float delta = ( 2.0f * (float)M_PI ) / (float)resolution.x;
-	float step	= 1.0f / (float)resolution.y;
+	float step	= 0.0f;
+    if( fixedHeight ) {
+        step = 1.0f / (float)resolution.y;
+    } else {
+        step = (1.0f / (float)resolution.x) * ( 20.0f * (float)M_PI );
+    }
 	float ud	= 1.0f / (float)resolution.x;
 
 	int32_t p = 0;

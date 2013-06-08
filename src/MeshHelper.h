@@ -59,7 +59,7 @@ public:
 		of \a baseRadius and \a resolution segments. Top and base are closed with \a closeTop and 
 		\a closeBase flags. */
 	static ci::TriMesh		createCylinder( const ci::Vec2i &resolution = ci::Vec2i( 12, 6 ), 
-		float topRadius = 1.0f, float baseRadius = 1.0f, bool closeTop = true, bool closeBase = true );
+		float topRadius = 1.0f, float baseRadius = 1.0f, bool closeTop = true, bool closeBase = true, bool fixedHeight = true );
 	//! Creates icosahedron where each face is subdivided \b division times.
 	static ci::TriMesh		createIcosahedron( uint32_t division = 1 );
 	/*! Create ring TriMesh with a radius of 1.0, \a resolution segments, and second radius 
